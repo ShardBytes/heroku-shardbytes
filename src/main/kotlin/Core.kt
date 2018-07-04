@@ -2,7 +2,6 @@ import io.javalin.Javalin
 import io.javalin.embeddedserver.Location
 import wshandlers.EchoWS
 import wshandlers.TimeWS
-import java.io.File
 
 
 class Core {
@@ -20,23 +19,13 @@ class Core {
 		}
 
 		// routing -> app.get(<route>) { (it = client) -> ... }
-
-		/*
-		app.get("/") {
-
-			println("${it.ip()} GET /")
-
-			it.html(File("static/index.html").readText())
-
-		}.get("/readCyka") {
-			it.result(File("a.txt").readText())
-		}
-		*/
+		
 
 		// wshandlers handling
 
 		app.ws("/timews", TimeWS())
 		app.ws("/echo", EchoWS())
+
 
 	}
 
