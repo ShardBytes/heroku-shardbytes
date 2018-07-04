@@ -21,7 +21,7 @@ class Core {
 		app.before {
 			println("BEFORE : protocol=${it.protocol()} host=${it.host()} ip=${it.ip()} requestRemoteAddr=${it.request().remoteAddr}")
 			if (
-					(it.protocol() == "http") &&
+					(!it.request().isSecure) &&
 					(it.host()?.run {contains("localhost") || contains("192.168.0.")} ?: false)
 			) {
 				println("[BEFORE] ${it.ip()} is accessing through http, redirecting to https ...")
