@@ -28,7 +28,7 @@ class Core {
 					!(it.host()?.run {contains("localhost") || contains("192.168.0.")} ?: false)
 			) {
 				println("[BEFORE] ${it.ip()} is accessing through http, redirecting to https ...")
-				it.redirect(it.url().replace("http://", "https://"), 303)
+				it.redirect(it.url().replace("http://", "https://"), 301)
 			}
 		}
 
