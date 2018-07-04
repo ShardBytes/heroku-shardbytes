@@ -23,6 +23,7 @@ class Core {
 			println("BEFORE : protocol=${it.protocol()} host=${it.host()} ip=${it.ip()} isSecure=${it.request().isSecure} url=${it.url()}")
 
 			// redirect if insecure request and not in devmode ( locahost )
+			// actually no because heroku doesnt allow this
 			/*
 			if (
 					!it.request().isSecure &&
