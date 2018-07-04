@@ -19,7 +19,7 @@ class Core {
 		}
 
 		// routing -> app.get(<route>) { (it = client) -> ... }
-		
+
 
 		// wshandlers handling
 
