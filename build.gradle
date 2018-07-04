@@ -1,6 +1,10 @@
 // ShardBytes heroku-shardbytes build script by Plasmoxy
 // (c) ShardBytes 2018
 
+buildscript {
+    println(" === ShardBytes : heroku-shardbytes ===")
+}
+
 // plugins for build
 plugins {
     id 'java' // allows to compile java ~ jvm

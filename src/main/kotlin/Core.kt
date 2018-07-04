@@ -18,8 +18,17 @@ class Core {
 			it.html("<b>Theres no page like this my dude yo got balboolzeld xDD</b>")
 		}
 
-		// routing -> app.get(<route>) { (it = client) -> ... }
+		app.before {
+			if (
+					(it.protocol() == "http") &&
+					(it.host()?.run {contains("localhost") || contains("192.168.0.")} ?: false)
+			) {
+				println("[BEFORE] ${it.ip()} is accessing through http, redirecting to https ...")
+				it.redirect(it.url().replace("http://", "https://"))
+			}
+		}
 
+		// routing -> app.get(<route>) { (it = client) -> ... }
 
 		// wshandlers handling
 
