@@ -20,9 +20,10 @@ class Core {
 
 		// before routing
 		app.before {
-			println("BEFORE : protocol=${it.protocol()} host=${it.host()} ip=${it.ip()}")
+			println("BEFORE : protocol=${it.protocol()} host=${it.host()} ip=${it.ip()} isSecure=${it.request().isSecure} url=${it.url()}")
 
 			// redirect if insecure request and not in devmode ( locahost )
+			/*
 			if (
 					!it.request().isSecure &&
 					!(it.host()?.run {contains("localhost") || contains("192.168.0.")} ?: false)
@@ -30,7 +31,9 @@ class Core {
 				println("[BEFORE] ${it.ip()} is accessing through http, redirecting to https ...")
 				it.redirect(it.url().replace("http://", "https://"), 301)
 			}
+			*/
 		}
+
 
 		// routing -> app.get(<route>) { (it = client) -> ... }
 
