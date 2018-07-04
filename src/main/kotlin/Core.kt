@@ -18,11 +18,14 @@ class Core {
 			it.html("<b>Theres no page like this my dude yo got balboolzeld xDD</b>")
 		}
 
+		// before routing
 		app.before {
-			println("BEFORE : protocol=${it.protocol()} host=${it.host()} ip=${it.ip()} requestRemoteAddr=${it.request().remoteAddr}")
+			println("BEFORE : protocol=${it.protocol()} host=${it.host()} ip=${it.ip()}")
+
+			// redirect if insecure request and not in devmode ( locahost )
 			if (
-					(!it.request().isSecure) &&
-					(it.host()?.run {contains("localhost") || contains("192.168.0.")} ?: false)
+					!it.request().isSecure &&
+					!(it.host()?.run {contains("localhost") || contains("192.168.0.")} ?: false)
 			) {
 				println("[BEFORE] ${it.ip()} is accessing through http, redirecting to https ...")
 				it.redirect(it.url().replace("http://", "https://"))
