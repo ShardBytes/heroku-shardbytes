@@ -1,5 +1,8 @@
 import io.javalin.Javalin
 import io.javalin.embeddedserver.Location
+import models.RestTime
+import models.TestJsonResponse
+import util.ServerClock
 import wshandlers.EchoWS
 import wshandlers.TimeWS
 
@@ -37,6 +40,13 @@ class Core {
 
 
 		// routing -> app.get(<route>) { (it = client) -> ... }
+		app.get("/resttest") {
+			it.json(TestJsonResponse(4))
+		}
+
+		app.get("/time") {
+			it.json(RestTime(ServerClock.europeTime()))
+		}
 
 		// wshandlers handling
 

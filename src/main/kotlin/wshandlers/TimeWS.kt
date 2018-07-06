@@ -2,8 +2,7 @@ package wshandlers
 
 import io.javalin.embeddedserver.jetty.websocket.WebSocketConfig
 import io.javalin.embeddedserver.jetty.websocket.WebSocketHandler
-import java.text.SimpleDateFormat
-import java.util.*
+import util.ServerClock
 
 class TimeWS : WebSocketConfig {
 
@@ -18,10 +17,7 @@ class TimeWS : WebSocketConfig {
 
 			if (msg == "getTime") {
 
-				val cal = Calendar.getInstance()
-				cal.time = Date()
-				cal.add(Calendar.HOUR_OF_DAY, 2)
-				val outTime = SimpleDateFormat("HH:mm:ss").format(cal.time)
+				val outTime = ServerClock.europeTime()
 
 				println("ws:timews : responding with time -> $outTime")
 				session.send(outTime)

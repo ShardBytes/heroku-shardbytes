@@ -39,6 +39,9 @@ dependencies {
     compile "org.slf4j:slf4j-simple:1.6.1"
     compile 'io.javalin:javalin:1.7.0'
 
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.0.1'
+
 }
 
 // setup kotlin target
